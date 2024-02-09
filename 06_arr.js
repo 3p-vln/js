@@ -143,3 +143,20 @@ const userArrFirst = users
   }, []);
 
 console.log(userArrFirst);
+
+const citys = users.reduce((acum, item, indx) => {
+  acum.push(item.city);
+  return acum;
+}, []);
+
+const usersNew = users.reduce((acum, item, indx) => {
+  let name = item.name.toLocaleLowerCase().split("");
+  for (let i in name) {
+    if (name[i] == "а") {
+      let random = Math.round(Math.random(citys.length - 1) * 10);
+      item.city = citys[random];
+      acum.push(item);
+    }
+  }
+  return acum;
+}, []);
