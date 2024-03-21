@@ -1,0 +1,18 @@
+let i = 0;
+
+let start = Date.now();
+
+function count() {
+  // перенесём планирование очередного вызова в начало
+  if (i < 1e9 - 1e6) {
+    setTimeout(count); // запланировать новый вызов
+  }
+
+  do {
+    i++;
+  } while (i % 1e6 != 0);
+
+  if (i == 1e9) {
+    alert("Done in " + (Date.now() - start) + "ms");
+  }
+}
